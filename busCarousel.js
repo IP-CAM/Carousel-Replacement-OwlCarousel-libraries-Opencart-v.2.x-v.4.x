@@ -1,4 +1,4 @@
-/*  Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
+/*	Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
 	© 2016-2020; BuslikDrev - Усе правы захаваныя. 
 	busCarousel v0.1.0 */
 
