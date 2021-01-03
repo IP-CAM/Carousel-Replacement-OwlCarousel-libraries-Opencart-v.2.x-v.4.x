@@ -3,7 +3,7 @@
 # Установка
 Подключите стили и скрипт установив в ```<head></head>```:
 ```
-<link href="busCarousel.css" type="text/css" rel="preload stylesheet" />
+<link href="busCarousel.css" type="text/css" rel="preload stylesheet" as="style" />
 <script src="busCarousel.js" onload="var busCarousel = {};" type="text/javascript"></script>
 ```
 
