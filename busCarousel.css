@@ -1,4 +1,134 @@
-/*  Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
-	© 2016-2020; BuslikDrev - Усе правы захаваныя. */
-  
-  .bus-carousel{}
+/*	Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
+	© 2016-2020; BuslikDrev - Усе правы захаваныя. 
+	busCarousel v0.1.0 */
+
+.bus-carousel{}
+
+/* clearfix */
+.bus-carousel .bus-wrapper:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+/* display none until init */
+.bus-carousel {
+	display: none;
+	position: relative;
+	width: 100%;
+	-ms-touch-action: pan-y;
+}
+.bus-carousel .bus-wrapper {
+	display: none;
+	position: relative;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+}
+.bus-carousel .bus-wrapper-outer {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.bus-carousel .bus-wrapper-outer.autoHeight {
+	-webkit-transition: height 500ms ease-in-out;
+	-moz-transition: height 500ms ease-in-out;
+	-ms-transition: height 500ms ease-in-out;
+	-o-transition: height 500ms ease-in-out;
+	transition: height 500ms ease-in-out;
+}
+.bus-carousel .bus-item {
+	float: left;
+}
+.bus-controls .bus-page, .bus-controls .bus-buttons div {
+	cursor: pointer;
+}
+.bus-controls .bus-buttons div {
+	position: absolute;
+}
+.bus-controls .bus-buttons .bus-prev {
+	left: 10px;
+	top: 50%;
+}
+.bus-controls .bus-buttons .bus-next {
+	right: 10px;
+	top: 50%;
+}
+.bus-controls {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+/* mouse grab icon */
+.grabbing {
+	cursor: url(grabbing.png) 8 8, move;
+}
+/* fix */
+.bus-carousel .bus-wrapper, .bus-carousel .bus-item {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+}
+/* OpenCart Code */
+.bus-carousel {
+	margin: 0 0 20px;
+	background: #fff;
+	direction: ltr !important;
+	z-index: 1;
+}
+.bus-wrapper-outer {
+	border: 4px solid #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,.2);
+	-o-box-shadow: 0 1px 4px rgba(0,0,0,.2);
+	box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+.bus-carousel .bus-buttons div {
+	opacity: 0;
+	color: rgba(0,0,0,0.8);
+	text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+	transition: all .3s ease;
+}
+.bus-carousel:hover .bus-buttons div {
+	opacity: 0.7;
+}
+.bus-carousel .bus-buttons .bus-prev {
+	left: 10px;
+}
+.bus-carousel .bus-buttons .bus-next {
+	right: 10px;
+}
+.bus-carousel .bus-buttons div i {
+	font-size: 40px;
+	margin: -20px 0 0;
+}
+.bus-pagination {
+	text-align: center;
+	top: 20px;
+	position: relative;
+}
+.bus-controls .bus-page {
+	display: inline-block;
+	margin: 0px 6px;
+}
+.bus-controls .bus-page span {
+	display: block;
+	width: 11px;
+	height: 11px;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 20px;
+	box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+}
+.bus-controls .bus-page.active span {
+	background: rgba(0, 0, 0, 0.9);
+}
