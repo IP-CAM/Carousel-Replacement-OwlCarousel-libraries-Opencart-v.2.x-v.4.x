@@ -1,5 +1,6 @@
-/*  Аўтар: "БуслікДрэў" ( https://buslikdrev.by/ )
-	© 2016-2021; BuslikDrev - Усе правы захаваныя. */
+/*  Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
+	© 2016-2020; BuslikDrev - Усе правы захаваныя. 
+	busCarousel v0.1.0 */
 
 if (Element.prototype.busCarousel === undefined) {
 	Element.prototype.busCarousel = function(options) {
@@ -69,7 +70,7 @@ if (Element.prototype.busCarousel === undefined) {
 	window.addEventListener('DOMContentLoaded', function() {
 		if (typeof busCarousel === 'object') {
 			for (var i in busCarousel) {
-				//console.log(busCarousel[i]);
+				console.log(busCarousel[i]);
 				if (busCarousel[i]['elem'] != null) {
 					busCarousel[i]['elem'].busCarousel(busCarousel[i]);
 				}
