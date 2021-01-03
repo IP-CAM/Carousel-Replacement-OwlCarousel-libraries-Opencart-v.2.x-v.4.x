@@ -3,7 +3,7 @@
 
 if (Element.prototype.busCarousel === undefined) {
 	Element.prototype.busCarousel = function(options) {
-		var options_default = {
+		var bus_options_default = {
 			items: 6,
 			itemsCustom: false,
 			itemsDesktop: [1199, 4],
@@ -51,16 +51,31 @@ if (Element.prototype.busCarousel === undefined) {
 		};
 
 		if (typeof options === 'undefined') {
-			options = options_default;
+			options = bus_options_default;
 		} else {
 			for (var i in options) {
-				options_default[i] = options[i];
+				if (typeof bus_options_default[i] !== 'undefined') {
+					bus_options_default[i] = options[i];
+				}
 			}
 
-			options = options_default;
+			options = bus_options_default;
 		}
 
-		console.log(this);
-		console.log(options);
+		//console.log(this);
+		//console.log(options);
 	}
+
+	window.addEventListener('DOMContentLoaded', function() {
+		if (typeof busCarousel === 'object') {
+			for (var i in busCarousel) {
+				//console.log(busCarousel[i]);
+				if (busCarousel[i]['elem'] != null) {
+					busCarousel[i]['elem'].busCarousel(busCarousel[i]);
+				}
+			}
+		}
+	});
+
+	var busCarousel = {};
 }
