@@ -1,7 +1,7 @@
 # busCarousel - замена библиотеки owl-carousel и swiper в OpenCart 2.X-4.X для возможности ускорения сайта за счёт отсрочки загрузки скрипта через отсечку времени или async загрузки без использования jQuery.
 
 # Установка
-Подключите стили и скрипт установив в ```<head></head>```
+Подключите стили и скрипт установив в ```<head></head>```:
 ```
 <link href="busCarousel.css" type="text/css" rel="preload stylesheet" />
 <script src="busCarousel.js" type="text/javascript"></script>
