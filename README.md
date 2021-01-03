@@ -35,7 +35,7 @@ busCarousel['slideshow1'] = {
 ```
 
 # Обозначения параметров настроек:
-	'elem' - полученные свойства elementa структуры DOM, например, через document.getElementById(id), document.querySelector(css), document.getElementsByName(name)[0], $(css) - через jQuery;
+	'elem' - полученные свойства elementa структуры DOM, например, через document.getElementById(id), document.querySelector(css), document.getElementsByName(name)[0], $(css)[0] - через jQuery;
 	'items: 6 - количество видимых кадров при отключённой опции "singleItem",
 	'singleItem: true - показ одного кадра, опция "items" игнорируется,
 	'autoPlay: 3000 - время показа кадра в миллисекундах до перехода к следующему кадру,
