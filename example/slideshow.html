@@ -10,6 +10,7 @@
   <?php } ?>
 </div>
 <script type="text/javascript"><!--
+// Вариант настроек 1
 document.getElementById('slideshow<?php echo $module; ?>').busCarousel({
 	items: 6,
 	singleItem: true,
@@ -18,4 +19,15 @@ document.getElementById('slideshow<?php echo $module; ?>').busCarousel({
 	navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
 	pagination: true,
 });
+
+// Вариант настроек 2
+busCarousel['slideshow<?php echo $module; ?>'] = {
+	elem: document.getElementById('slideshow<?php echo $module; ?>'),
+	items: 6,
+	singleItem: true,
+	autoPlay: 3000,
+	navigation: true,
+	navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+	pagination: true,
+};
 //--></script>
