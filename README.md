@@ -4,7 +4,7 @@
 Подключите стили и скрипт установив в ```<head></head>```:
 ```
 <link href="busCarousel.css" type="text/css" rel="preload stylesheet" />
-<script src="busCarousel.js" type="text/javascript"></script>
+<script src="busCarousel.js" onload="var busCarousel = {};" type="text/javascript"></script>
 ```
 
 Привяжите html-код изображений к скрипту:
@@ -23,6 +23,9 @@ document.getElementById('slideshow1').busCarousel({
 ```
 Вариант 2 (при таком варианте можно отложить загрузку скрипта)
 ```
+if (typeof busCarousel !== 'object') {
+	var busCarousel = {};
+}
 busCarousel['slideshow1'] = {
 	elem: document.getElementById('slideshow1'),
 	items: 6,
