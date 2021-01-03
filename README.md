@@ -36,9 +36,9 @@ busCarousel['slideshow1'] = {
 
 # Обозначения параметров настроек:
 	'elem' - полученные свойства elementa структуры DOM, например, через document.getElementById(id), document.querySelector(css), document.getElementsByName(name)[0], $(css)[0] - через jQuery;
-	'items: 6 - количество видимых кадров при отключённой опции "singleItem",
-	'singleItem: true - показ одного кадра, опция "items" игнорируется,
-	'autoPlay: 3000 - время показа кадра в миллисекундах до перехода к следующему кадру,
-	'navigation: true - включение\отключение кнопок навигации,
+	'items' - количество видимых кадров при отключённой опции "singleItem",
+	'singleItem' - показ одного кадра, опция "items" игнорируется,
+	'autoPlay' - время показа кадра в миллисекундах до перехода к следующему кадру,
+	'navigation' - включение\отключение кнопок навигации,
 	'navigationText' - замена кнопока навигации на свои по такому шаблону: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
 	'pagination' - включение\отключение кнопок пагинации;
