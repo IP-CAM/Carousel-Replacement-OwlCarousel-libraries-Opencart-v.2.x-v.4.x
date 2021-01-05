@@ -17,7 +17,7 @@
 	position: relative;
 	list-style: none;
 	margin: 0;
-    padding: 0;
+	padding: 0;
 	width: 10000%; 
 	height:100%;
 	/* animation: start 10s infinite; */
@@ -72,34 +72,34 @@
 }
 .bus-carousel ul li img,
 .bus-carousel .bus-carousel-list li img{
-    display: block;
-    width: 100%;
-    height: auto;
+	display: block;
+	width: 100%;
+	height: auto;
 	vertical-align: middle;
 }
 .bus-carousel .bus-carousel-page{
-    position: absolute;
+	position: absolute;
 	width: 100%;
-    top: 50%;
-    line-height: 45px;
+	top: 50%;
+	line-height: 45px;
 	margin-top: -45px;
 }
 .bus-carousel .bus-carousel-page-prev,
 .bus-carousel .bus-carousel-page-next {
-    color: rgba(0,0,0,.8);
-    text-shadow: 1px 1px 0 rgba(255,255,255,.3);
-    transition: all .3s ease;
-    background-image: none;
+	color: rgba(0,0,0,.8);
+	text-shadow: 1px 1px 0 rgba(255,255,255,.3);
+	transition: all .3s ease;
+	background-image: none;
 	cursor: pointer;
 }
 .bus-carousel .bus-carousel-page-prev{
 	position: absolute;
 	opacity: 0;
-    left: -20px;
+	left: -20px;
 }
 .bus-carousel:hover .bus-carousel-page-prev{
 	opacity: .7;
-    left: 10px;
+	left: 10px;
 }
 .bus-carousel .bus-carousel-page-prev:hover{
 	opacity: 1;
@@ -107,29 +107,29 @@
 .bus-carousel .bus-carousel-page-next{
 	position: absolute;
 	opacity: 0;
-    right: -20px;
+	right: -20px;
 }
 .bus-carousel:hover .bus-carousel-page-next{
 	opacity: .7;
-    right: 10px;
+	right: 10px;
 }
 .bus-carousel .bus-carousel-page-next:hover{
 	opacity: 1;
 }
 .bus-carousel-pagination{
 	display: table;
-    position: relative;
-    margin: 0 auto 20px;
+	position: relative;
+	margin: 0 auto 20px;
 }
 .bus-carousel-pagination-button{
 	width: 11px;
-    height: 11px;
-    background: rgba(0,0,0,.5);
-    border-radius: 20px;
-    box-shadow: inset 0 0 3px rgba(0,0,0,.3);
-    margin: 0 5px;
-    opacity: 1;
-    float: left;
+	height: 11px;
+	background: rgba(0,0,0,.5);
+	border-radius: 20px;
+	box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+	margin: 0 5px;
+	opacity: 1;
+	float: left;
 }
 .bus-carousel-pagination-button.active{
 	background: rgba(0,0,0,.9);
