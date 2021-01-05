@@ -1,134 +1,136 @@
 /*	Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
-	© 2016-2020; BuslikDrev - Усе правы захаваныя. 
-	busCarousel v0.1.0 */
+	© 2016-2021; BuslikDrev - Усе правы захаваныя. 
+	busCarousel v0.2.0 */
 
-.bus-carousel{}
-
-/* clearfix */
-.bus-carousel .bus-wrapper:after {
-	content: ".";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	line-height: 0;
-	height: 0;
-}
-/* display none until init */
-.bus-carousel {
-	display: none;
-	position: relative;
-	width: 100%;
-	-ms-touch-action: pan-y;
-}
-.bus-carousel .bus-wrapper {
-	display: none;
-	position: relative;
-	-webkit-transform: translate3d(0px, 0px, 0px);
-}
-.bus-carousel .bus-wrapper-outer {
+.bus-carousel{
+	position:relative;
+	margin: 0 auto 20px;
+	padding:0;
 	overflow: hidden;
-	position: relative;
-	width: 100%;
-}
-.bus-carousel .bus-wrapper-outer.autoHeight {
-	-webkit-transition: height 500ms ease-in-out;
-	-moz-transition: height 500ms ease-in-out;
-	-ms-transition: height 500ms ease-in-out;
-	-o-transition: height 500ms ease-in-out;
-	transition: height 500ms ease-in-out;
-}
-.bus-carousel .bus-item {
-	float: left;
-}
-.bus-controls .bus-page, .bus-controls .bus-buttons div {
-	cursor: pointer;
-}
-.bus-controls .bus-buttons div {
-	position: absolute;
-}
-.bus-controls .bus-buttons .bus-prev {
-	left: 10px;
-	top: 50%;
-}
-.bus-controls .bus-buttons .bus-next {
-	right: 10px;
-	top: 50%;
-}
-.bus-controls {
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-/* mouse grab icon */
-.grabbing {
-	cursor: url(grabbing.png) 8 8, move;
-}
-/* fix */
-.bus-carousel .bus-wrapper, .bus-carousel .bus-item {
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-ms-backface-visibility: hidden;
-	-webkit-transform: translate3d(0, 0, 0);
-	-moz-transform: translate3d(0, 0, 0);
-	-ms-transform: translate3d(0, 0, 0);
-}
-/* OpenCart Code */
-.bus-carousel {
-	margin: 0 0 20px;
 	background: #fff;
-	direction: ltr !important;
-	z-index: 1;
-}
-.bus-wrapper-outer {
 	border: 4px solid #fff;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	-o-border-radius: 4px;
 	border-radius: 4px;
-	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2);
-	-moz-box-shadow: 0 1px 4px rgba(0,0,0,.2);
-	-o-box-shadow: 0 1px 4px rgba(0,0,0,.2);
 	box-shadow: 0 1px 4px rgba(0,0,0,.2);
 }
-.bus-carousel .bus-buttons div {
-	opacity: 0;
-	color: rgba(0,0,0,0.8);
-	text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
-	transition: all .3s ease;
-}
-.bus-carousel:hover .bus-buttons div {
-	opacity: 0.7;
-}
-.bus-carousel .bus-buttons .bus-prev {
-	left: 10px;
-}
-.bus-carousel .bus-buttons .bus-next {
-	right: 10px;
-}
-.bus-carousel .bus-buttons div i {
-	font-size: 40px;
-	margin: -20px 0 0;
-}
-.bus-pagination {
-	text-align: center;
-	top: 20px;
+.bus-carousel ul,
+.bus-carousel .list{
 	position: relative;
+	list-style: none;
+	margin: 0;
+    padding: 0;
+	width: 10000%; 
+	height:100%;
+	/* animation: start 10s infinite; */
+	/* -moz-animation: wsBasic 10s infinite;
+	-webkit-animation: wsBasic 10s infinite;
+	animation-name: wsBasic;
+	animation-duration: 10s;
+	animation-timing-function: ease;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-fill-mode: none;
+	animation-play-state: running; */
+
 }
-.bus-controls .bus-page {
-	display: inline-block;
-	margin: 0px 6px;
+@keyframes start{
+	0%{transform: translateX(0%)}
+	25%{transform: translateX(0%)}
+	50%{transform: translateX(-100%)}
+	75%{transform: translateX(-100%)}
 }
-.bus-controls .bus-page span {
-	display: block;
+@keyframes stop{
+	100%{transform: translateX(0%)}
+}
+@keyframes wsBasic{
+	0%{transform: translateX(0%)}
+	25%{transform: translateX(0%)}
+	50%{transform: translateX(-1%)}
+	75%{transform: translateX(-1%)}
+	100%{transform: translateX(0%)}
+}
+@-moz-keyframes wsBasic{
+	0%{left:0%;}
+	25%{left:-0%;}
+	50%{left:-100%;}
+	75%{left:-100%;}
+	100%{left:0%;}
+}
+@-webkit-keyframes wsBasic{
+	0%{left:0%;}
+	25%{left:-0%;}
+	50%{left:-100%;}
+	75%{left:-100%;}
+	100%{left:0%;}
+}
+.bus-carousel ul li,
+.bus-carousel .bus-carousel-list li{
+	position: relative;
+	width: 1%;
+	float: left;
+	animation: start 6s infinite;
+}
+.bus-carousel ul li img,
+.bus-carousel .bus-carousel-list li img{
+    display: block;
+    width: 100%;
+    height: auto;
+	vertical-align: middle;
+}
+.bus-carousel .bus-carousel-page{
+    position: absolute;
+	width: 100%;
+    top: 50%;
+    line-height: 45px;
+	margin-top: -45px;
+}
+.bus-carousel .bus-carousel-page-prev,
+.bus-carousel .bus-carousel-page-next {
+    color: rgba(0,0,0,.8);
+    text-shadow: 1px 1px 0 rgba(255,255,255,.3);
+    transition: all .3s ease;
+    background-image: none;
+	cursor: pointer;
+}
+.bus-carousel .bus-carousel-page-prev{
+	position: absolute;
+	opacity: 0;
+    left: -20px;
+}
+.bus-carousel:hover .bus-carousel-page-prev{
+	opacity: .7;
+    left: 10px;
+}
+.bus-carousel .bus-carousel-page-prev:hover{
+	opacity: 1;
+}
+.bus-carousel .bus-carousel-page-next{
+	position: absolute;
+	opacity: 0;
+    right: -20px;
+}
+.bus-carousel:hover .bus-carousel-page-next{
+	opacity: .7;
+    right: 10px;
+}
+.bus-carousel .bus-carousel-page-next:hover{
+	opacity: 1;
+}
+.bus-carousel-pagination{
+	display: table;
+    position: relative;
+    margin: 0 auto 20px;
+}
+.bus-carousel-pagination-button{
 	width: 11px;
-	height: 11px;
-	background: rgba(0, 0, 0, 0.5);
-	border-radius: 20px;
-	box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+    height: 11px;
+    background: rgba(0,0,0,.5);
+    border-radius: 20px;
+    box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+    margin: 0 5px;
+    opacity: 1;
+    float: left;
 }
-.bus-controls .bus-page.active span {
-	background: rgba(0, 0, 0, 0.9);
+.bus-carousel-pagination-button.active{
+	background: rgba(0,0,0,.9);
 }
