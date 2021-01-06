@@ -37,6 +37,25 @@ busCarousel['slideshow1'] = {
 };
 ```
 
+Вариант 3 (при таком варианте можно отложить загрузку скрипта)
+```
+<div id="slideshow1" class="bus-carousel" data-items="6" data-singleItem="true" data-autoPlay="3000" data-navigation="true" data-navigationText="['<i class=\'fa fa-chevron-left fa-5x\'></i>', '<i class=\'fa fa-chevron-right fa-5x\'></i>']" data-pagination="true">
+
+</div>
+```
+
+Вариант 4 (при таком варианте можно отложить загрузку скрипта)
+```
+document.getElementById('slideshow1').setAttribute('data-setting', JSON.stringify({
+	items: 6,
+	singleItem: true,
+	autoPlay: 3000,
+	navigation: true,
+	navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+	pagination: true,
+}));
+```
+
 # Обозначения параметров настроек:
 	'elem' - полученные свойства elementa структуры DOM, например, через document.getElementById(id), document.querySelector(css), document.getElementsByName(name)[0], $(css)[0] - через jQuery;
 	'items' - количество видимых кадров при отключённой опции "singleItem",
