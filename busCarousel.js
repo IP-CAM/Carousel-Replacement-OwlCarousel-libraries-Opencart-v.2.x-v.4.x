@@ -111,7 +111,7 @@ if (Element.prototype.busCarousel === undefined) {
 					if (typeof busCarousel[i]['elem'].length === 'number') {
 						busCarousel[i]['elem'] = busCarousel[i]['elem'][0];
 					}
-					//console.log(busCarousel[i]);
+					console.log(busCarousel[i]);
 					busCarousel[i]['elem'].busCarousel(busCarousel[i]);
 				}
 			}
@@ -120,5 +120,7 @@ if (Element.prototype.busCarousel === undefined) {
 		//console.log(document.querySelectorAll('.bus-carousel'));
 	});
 
-	var busCarousel = {};
+	if (typeof busCarousel !== 'object') {
+		var busCarousel = {};
+	}
 }
