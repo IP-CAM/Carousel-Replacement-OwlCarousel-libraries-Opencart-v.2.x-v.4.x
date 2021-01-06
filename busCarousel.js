@@ -1,6 +1,6 @@
 /*	Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
 	© 2016-2021; BuslikDrev - Усе правы захаваныя. 
-	busCarousel v0.2.0 */
+	busCarousel v0.2.1 */
 
 if (Element.prototype.busCarousel === undefined) {
 	Element.prototype.busCarousel = function(options) {
@@ -34,7 +34,7 @@ if (Element.prototype.busCarousel === undefined) {
 		}
 
 		//console.log(this);
-		console.log(options);
+		//console.log(options);
 	}
 
 	window.addEventListener("load", function () {
@@ -51,10 +51,12 @@ if (Element.prototype.busCarousel === undefined) {
 		}
 
 		if (typeof busCarousel === 'object') {
-			//for (var i in busCarousel) {
-			for (var i = 0; i < busCarousel.length; i++) {
-				//console.log(busCarousel[i]);
+			for (var i in busCarousel) {
 				if (busCarousel[i]['elem'] != null) {
+					if (typeof busCarousel[i]['elem'].length === 'number') {
+						busCarousel[i]['elem'] = busCarousel[i]['elem'][0];
+					}
+					console.log(busCarousel[i]['elem']);
 					busCarousel[i]['elem'].busCarousel(busCarousel[i]);
 				}
 			}
