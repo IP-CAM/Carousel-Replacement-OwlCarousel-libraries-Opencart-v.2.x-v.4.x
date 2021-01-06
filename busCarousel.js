@@ -1,54 +1,21 @@
 /*	Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
-	© 2016-2020; BuslikDrev - Усе правы захаваныя. 
-	busCarousel v0.1.0 */
+	© 2016-2021; BuslikDrev - Усе правы захаваныя. 
+	busCarousel v0.2.0 */
 
 if (Element.prototype.busCarousel === undefined) {
 	Element.prototype.busCarousel = function(options) {
 		var bus_options_default = {
 			items: 6,
-			itemsCustom: false,
-			itemsDesktop: [1199, 4],
-			itemsDesktopSmall: [979, 3],
-			itemsTablet: [768, 2],
-			itemsTabletSmall: false,
-			itemsMobile: [479, 1],
 			singleItem: false,
-			itemsScaleUp: false,
-			slideSpeed: 200,
-			paginationSpeed: 800,
-			rewindSpeed: 1000,
+			//slideSpeed: 200,
+			//paginationSpeed: 800,
+			//rewindSpeed: 1000,
 			autoPlay: false,
-			stopOnHover: false,
 			navigation: false,
 			navigationText: ["prev", "next"],
-			rewindNav: true,
-			scrollPerPage: false,
 			pagination: true,
-			paginationNumbers: false,
-			responsive: true,
-			responsiveRefreshRate: 200,
-			baseClass: "owl-carousel",
-			theme: "owl-theme",
+			baseClass: "bus-carousel",
 			lazyLoad: false,
-			lazyFollow: true,
-			lazyEffect: "fade",
-			autoHeight: false,
-			jsonPath: false,
-			jsonSuccess: false,
-			dragBeforeAnimFinish: true,
-			mouseDrag: true,
-			touchDrag: true,
-			addClassActive: false,
-			transitionStyle: false,
-			beforeUpdate: false,
-			afterUpdate: false,
-			beforeInit: false,
-			afterInit: false,
-			beforeMove: false,
-			afterMove: false,
-			afterAction: false,
-			startDragging: false,
-			afterLazyLoad: false
 		};
 
 		if (typeof options === 'undefined') {
@@ -56,6 +23,9 @@ if (Element.prototype.busCarousel === undefined) {
 		} else {
 			for (var i in options) {
 				if (typeof bus_options_default[i] !== 'undefined') {
+					if (i == 'navigationText') {
+						options[i][0]
+					}
 					bus_options_default[i] = options[i];
 				}
 			}
@@ -64,18 +34,33 @@ if (Element.prototype.busCarousel === undefined) {
 		}
 
 		//console.log(this);
-		//console.log(options);
+		console.log(options);
 	}
 
-	window.addEventListener('DOMContentLoaded', function() {
+	window.addEventListener("load", function () {
+		busCarouselSetting = document.querySelectorAll('.bus-carousel');
+		if (busCarouselSetting && typeof busCarouselSetting === 'object') {
+			//for (var i in busCarouselSetting) {
+			for (var i = 0; i < busCarouselSetting.length; i++) {
+				if (busCarouselSetting[i].dataset.setting != null) {
+					busCarouselSetting[i].busCarousel(JSON.parse(busCarouselSetting[i].dataset.setting));
+				} else if (busCarouselSetting[i].dataset) {
+					busCarouselSetting[i].busCarousel(busCarouselSetting[i].dataset);
+				}
+			}
+		}
+
 		if (typeof busCarousel === 'object') {
-			for (var i in busCarousel) {
-				console.log(busCarousel[i]);
+			//for (var i in busCarousel) {
+			for (var i = 0; i < busCarousel.length; i++) {
+				//console.log(busCarousel[i]);
 				if (busCarousel[i]['elem'] != null) {
 					busCarousel[i]['elem'].busCarousel(busCarousel[i]);
 				}
 			}
 		}
+		//console.log(busCarousel);
+		//console.log(document.querySelectorAll('.bus-carousel'));
 	});
 
 	var busCarousel = {};
