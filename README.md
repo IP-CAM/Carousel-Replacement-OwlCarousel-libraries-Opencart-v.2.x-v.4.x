@@ -57,7 +57,7 @@ document.getElementById('slideshow1').setAttribute('data-setting', JSON.stringif
 ```
 
 # Обозначения параметров настроек:
-	'elem' - полученные свойства elementa структуры DOM, например, через document.getElementById(id), document.querySelector(css), document.getElementsByName(name)[0], $(css)[0] - через jQuery;
+	'elem' - полученные свойства elementa структуры DOM, например, через document.getElementById(id) или getElementsByClassName(class), document.querySelector(css) или document.querySelectorAll(css), document.getElementsByName(tag) или document.getElementsByName(tag)[0], $(css) или $(css)[0] - через jQuery;
 	'items' - количество видимых кадров при отключённой опции "singleItem",
 	'singleItem' - показ одного кадра, опция "items" игнорируется,
 	'autoPlay' - время показа кадра в миллисекундах до перехода к следующему кадру,
