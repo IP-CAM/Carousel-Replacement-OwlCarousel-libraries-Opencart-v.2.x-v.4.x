@@ -1,7 +1,7 @@
 # busCarousel (v0.2.0) - замена библиотеки owl-carousel и swiper в OpenCart 2.X-4.X для возможности ускорения сайта за счёт отсрочки загрузки скрипта через defer или async загрузки без использования jQuery.
 
 # Установка
-Подключите стили и скрипт установив в ```<head></head>```:
+Подключите стили и скрипт, установив в ```<head></head>```:
 ```
 <link href="busCarousel.css" type="text/css" rel="preload stylesheet" as="style" />
 <script src="busCarousel.js" type="text/javascript" onload="var busCarousel = {};" async></script>
@@ -39,7 +39,7 @@ busCarousel['slideshow1'] = {
 
 Вариант 3 (при таком варианте можно отложить загрузку скрипта)
 ```
-<div id="slideshow1" class="bus-carousel" data-items="6" data-singleItem="true" data-autoPlay="3000" data-navigation="true" data-navigationText="['<i class=\'fa fa-chevron-left fa-5x\'></i>', '<i class=\'fa fa-chevron-right fa-5x\'></i>']" data-pagination="true">
+<div id="slideshow1" class="bus-carousel" data-items="6" data-single-item="true" data-auto-play="3000" data-navigation="true" data-navigation-text="['<i class=\'fa fa-chevron-left fa-5x\'></i>', '<i class=\'fa fa-chevron-right fa-5x\'></i>']" data-pagination="true">
 
 </div>
 ```
@@ -57,7 +57,7 @@ document.getElementById('slideshow1').setAttribute('data-setting', JSON.stringif
 ```
 
 # Обозначения параметров настроек:
-	'elem' - полученные свойства elementa структуры DOM, например, через document.getElementById(id) или getElementsByClassName(class), document.querySelector(css) или document.querySelectorAll(css), document.getElementsByTagName(tag) или document.getElementsByTagName(tag)[0], $(css) или $(css)[0] - через jQuery;
+	'elem' - полученные свойства элемента структуры DOM, например, через document.getElementById(id) или getElementsByClassName(class), document.querySelector(css) или document.querySelectorAll(css), document.getElementsByTagName(tag) или document.getElementsByTagName(tag)[0], $(css) или $(css)[0] - через jQuery;
 	'items' - количество видимых кадров при отключённой опции "singleItem",
 	'singleItem' - показ одного кадра, опция "items" игнорируется,
 	'autoPlay' - время показа кадра в миллисекундах до перехода к следующему кадру,
