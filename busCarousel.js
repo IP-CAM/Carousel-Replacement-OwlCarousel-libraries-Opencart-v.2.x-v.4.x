@@ -1,23 +1,12 @@
 /*	Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
 	© 2016-2021; BuslikDrev - Усе правы захаваныя. 
-	busCarousel v0.2.2 */
+	busCarousel v0.3.0 */
 
 if (Element.prototype.busCarousel === undefined) {
-	var bus_options_default = {
-		elem: false,
-		items: 6,
-		singleItem: false,
-		//slideSpeed: 200,
-		//paginationSpeed: 800,
-		//rewindSpeed: 1000,
-		autoPlay: false,
-		navigation: false,
-		navigationText: ["prev", "next"],
-		pagination: true,
-		baseClass: "bus-carousel",
-		lazyLoad: false,
-		transitionStyle: false, //"fade", "backSlide", "goDown", "fadeUp"
-	};
+	// настройки
+	if (typeof busCarousel !== 'object') {
+		var busCarousel = {};
+	}
 
 	var bus_pref = 'transform',
 	bus_animation = false,
@@ -47,15 +36,59 @@ if (Element.prototype.busCarousel === undefined) {
 		}
 	}
 
+	// основной скрипт
 	Element.prototype.busCarousel = function(options) {
+		var bus_options_default = {
+			elem: false,
+			items: 6,
+			singleItem: false,
+			//slideSpeed: 200,
+			//paginationSpeed: 800,
+			//rewindSpeed: 1000,
+			autoPlay: false,
+			navigation: false,
+			navigationText: ["prev", "next"],
+			pagination: true,
+			baseClass: "bus-carousel",
+			lazyLoad: false,
+			transitionStyle: false, //"fade", "backSlide", "goDown", "fadeUp"
+		};
+
 		if (typeof options === 'undefined') {
 			options = bus_options_default;
 		} else {
 			for (var i in options) {
 				if (typeof bus_options_default[i] !== 'undefined') {
-					if (i == 'navigationText') {
-						options[i][0]
+					if (options[i] === String(parseFloat(options[i]))) {
+						options[i] = parseFloat(options[i]);
+					} else if (options[i] == 'true') {
+						options[i] = true;
+					} else if (options[i] == 'false') {
+						options[i] = false;
 					}
+
+					if (i == 'navigationText') {
+						if (typeof options[i] === 'string') {
+							//console.log(options[i]);
+							try {
+								options[i] = JSON.parse(options[i].replace(/\'/g, '"'));
+							} catch (e) {
+								console.log(e);
+							}
+						}
+
+						if (typeof options[i] === 'object') {
+							if (!options[i][0]) {
+								options[i][0] = bus_options_default[i][0];
+							}
+							if (!options[i][1]) {
+								options[i][1] = bus_options_default[i][1];
+							}
+						} else {
+							options[i] = bus_options_default[i];
+						}
+					}
+
 					bus_options_default[i] = options[i];
 				}
 			}
@@ -63,14 +96,32 @@ if (Element.prototype.busCarousel === undefined) {
 			options = bus_options_default;
 		}
 
-		
 		if (options['elem']) {
-			options['elem'].style['display'] = 'none';
+			//options['elem'].style['display'] = 'none';
 			//options['elem'].setAttribute('style','display:none');
-			console.log(options['elem']);
+			//console.log(options['elem']);
 		}
 
-		if (bus_animation == false && bus_transformation == true) {
+		if (bus_animation == true && bus_transformation == true) {
+			if (options['elem']) {
+				//console.log(options['pagination']);
+				if (options['navigation'] == true) {
+					var parent = document.createElement("div");
+					parent.className = 'bus-carousel-page';
+					parent.innerHTML = '<span class="bus-carousel-page-prev">' + options['navigationText'][0] + '</span><span class="bus-carousel-page-next">' + options['navigationText'][1] + '</span>';
+					options['elem'].appendChild(parent);
+				}
+				if (options['pagination'] == true) {
+					var parent = document.createElement("div");
+					parent.className = 'bus-carousel-pagination';
+					parent.innerHTML = '';
+					for (var i = 0; i < 3; i++) {
+						parent.innerHTML += '<span class="bus-carousel-pagination-button' + (i == 0 ? ' active' : '') + '"></span>';
+					}
+					options['elem'].parentNode.insertBefore(parent, options['elem'].nextSibling);
+				}
+			}
+		} else if (bus_animation == false && bus_transformation == true) {
 			setInterval(function() {
 				
 			}, 1000);
@@ -84,7 +135,8 @@ if (Element.prototype.busCarousel === undefined) {
 		//console.log(options);
 	}
 
-	window.addEventListener("load", function () {
+	// поиск настроек и запуск основного скрипта
+	window.addEventListener('load', function () {
 		//busCarouselSetting = document.querySelectorAll('.bus-carousel');
 		busCarouselSetting = document.getElementsByClassName('bus-carousel');
 		if (busCarouselSetting && typeof busCarouselSetting === 'object') {
@@ -111,7 +163,7 @@ if (Element.prototype.busCarousel === undefined) {
 					if (typeof busCarousel[i]['elem'].length === 'number') {
 						busCarousel[i]['elem'] = busCarousel[i]['elem'][0];
 					}
-					console.log(busCarousel[i]);
+					//console.log(busCarousel[i]);
 					busCarousel[i]['elem'].busCarousel(busCarousel[i]);
 				}
 			}
@@ -119,8 +171,4 @@ if (Element.prototype.busCarousel === undefined) {
 		//console.log(busCarousel);
 		//console.log(document.querySelectorAll('.bus-carousel'));
 	});
-
-	if (typeof busCarousel !== 'object') {
-		var busCarousel = {};
-	}
 }
