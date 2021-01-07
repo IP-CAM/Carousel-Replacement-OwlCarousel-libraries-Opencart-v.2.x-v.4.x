@@ -1,6 +1,6 @@
 /*	Аўтар: "БуслікДрэў" ( http://buslikdrev.by/ )
 	© 2016-2021; BuslikDrev - Усе правы захаваныя. 
-	busCarousel v0.3.0 */
+	busCarousel v0.3.1 */
 
 if (Element.prototype.busCarousel === undefined) {
 	// настройки
@@ -39,7 +39,7 @@ if (Element.prototype.busCarousel === undefined) {
 	// основной скрипт
 	Element.prototype.busCarousel = function(options) {
 		var bus_options_default = {
-			elem: false,
+			elem: this,
 			items: 6,
 			singleItem: false,
 			//slideSpeed: 200,
@@ -47,9 +47,9 @@ if (Element.prototype.busCarousel === undefined) {
 			//rewindSpeed: 1000,
 			autoPlay: false,
 			navigation: false,
-			navigationText: ["prev", "next"],
+			navigationText: ['prev', 'next'],
 			pagination: true,
-			baseClass: "bus-carousel",
+			baseClass: 'bus-carousel',
 			lazyLoad: false,
 			transitionStyle: false, //"fade", "backSlide", "goDown", "fadeUp"
 		};
@@ -99,40 +99,89 @@ if (Element.prototype.busCarousel === undefined) {
 		if (options['elem']) {
 			//options['elem'].style['display'] = 'none';
 			//options['elem'].setAttribute('style','display:none');
-			//console.log(options['elem']);
-		}
+			if (bus_transformation == true || bus_animation == true) {
+				var images = options['elem'].getElementsByTagName('img');
 
-		if (bus_animation == true && bus_transformation == true) {
-			if (options['elem']) {
-				//console.log(options['pagination']);
-				if (options['navigation'] == true) {
-					var parent = document.createElement("div");
-					parent.className = 'bus-carousel-page';
-					parent.innerHTML = '<span class="bus-carousel-page-prev">' + options['navigationText'][0] + '</span><span class="bus-carousel-page-next">' + options['navigationText'][1] + '</span>';
-					options['elem'].appendChild(parent);
-				}
-				if (options['pagination'] == true) {
-					var parent = document.createElement("div");
-					parent.className = 'bus-carousel-pagination';
-					parent.innerHTML = '';
-					for (var i = 0; i < 3; i++) {
-						parent.innerHTML += '<span class="bus-carousel-pagination-button' + (i == 0 ? ' active' : '') + '"></span>';
+				if (images.length) {
+					/* if (bus_transformation == true) {
+						options['elem'].style['display'] = 'block';
+						if (options['items'] && options['singleItem'] == false) {
+							var image_width = (images[0].offsetWidth/images.length);
+							for (var i = 0; i < images.length; i++) {
+								images[i].parentNode.style['width'] = image_width.toFixed(2) + 'px';
+							}
+						}
+						if (options['autoPlay']) {
+							for (var i = 0; i < images.length; i++) {
+								images[i].parentNode.style['animation-duration'] = parseFloat(options['autoPlay']) + 'ms';
+							}
+						}
+						if (images.length > 1 && options['navigation'] == true) {
+							var parent = document.createElement("div");
+							parent.className = 'bus-carousel-page';
+							parent.innerHTML = '<span class="bus-carousel-page-prev">' + options['navigationText'][0] + '</span><span class="bus-carousel-page-next">' + options['navigationText'][1] + '</span>';
+							options['elem'].appendChild(parent);
+						}
+						if (images.length > 1 && options['pagination'] == true) {
+							var parent = document.createElement("div");
+							parent.className = 'bus-carousel-pagination';
+							parent.innerHTML = '';
+							//console.log(images.length);
+							for (var i = 0; i < images.length; i++) {
+								parent.innerHTML += '<span class="bus-carousel-pagination-button' + (i == 0 ? ' active' : '') + '"></span>';
+							}
+							options['elem'].parentNode.insertBefore(parent, options['elem'].nextSibling);
+						}
+					} */
+
+					if (bus_animation == true) {
+						options['elem'].style['display'] = 'block';
+						if (options['items'] && options['singleItem'] == false) {
+							var image_width = (images[0].offsetWidth/images.length);
+							for (var i = 0; i < images.length; i++) {
+								images[i].parentNode.style['width'] = image_width.toFixed(2) + 'px';
+							}
+						}
+						if (options['autoPlay']) {
+							for (var i = 0; i < images.length; i++) {
+								images[i].parentNode.style['animation-duration'] = parseFloat(options['autoPlay']) + 'ms';
+							}
+						}
+						if (images.length > 1 && options['navigation'] == true) {
+							var parent = document.createElement("div");
+							parent.className = 'bus-carousel-page';
+							parent.innerHTML = '<span class="bus-carousel-page-prev">' + options['navigationText'][0] + '</span><span class="bus-carousel-page-next">' + options['navigationText'][1] + '</span>';
+							options['elem'].appendChild(parent);
+						}
+						if (images.length > 1 && options['pagination'] == true) {
+							var parent = document.createElement("div");
+							parent.className = 'bus-carousel-pagination';
+							parent.innerHTML = '';
+							//console.log(images.length);
+							for (var i = 0; i < images.length; i++) {
+								parent.innerHTML += '<span class="bus-carousel-pagination-button' + (i == 0 ? ' active' : '') + '"></span>';
+							}
+							options['elem'].parentNode.insertBefore(parent, options['elem'].nextSibling);
+						}
 					}
-					options['elem'].parentNode.insertBefore(parent, options['elem'].nextSibling);
+				} else {
+					options['elem'].style['display'] = 'none';
 				}
 			}
-		} else if (bus_animation == false && bus_transformation == true) {
-			setInterval(function() {
+
+			if (bus_animation == true && bus_transformation == true) {
+
+			} else if (bus_animation == false && bus_transformation == true) {
+				/* setInterval(function() {
 				
-			}, 1000);
-		} else if (bus_animation == false && bus_transformation == false) {
-			if (options['elem']) {
+				}, 1000); */
+			} else if (bus_animation == false && bus_transformation == false) {
 				options['elem'].style['display'] = 'none';
 			}
 		}
 
 		//console.log(this);
-		//console.log(options);
+		//console.log(options['elem']);
 	}
 
 	// поиск настроек и запуск основного скрипта
@@ -146,11 +195,11 @@ if (Element.prototype.busCarousel === undefined) {
 				
 				if (setting['setting'] != null) {
 					setting = setting['setting'];
-					setting['elem'] = busCarouselSetting[i];
+					//setting['elem'] = busCarouselSetting[i];
 					//console.log(setting);
 					busCarouselSetting[i].busCarousel(setting);
 				} else if (setting != null && Object.keys(setting).length/* && JSON.stringify(setting) != '{}'*/) {
-					setting['elem'] = busCarouselSetting[i];
+					//setting['elem'] = busCarouselSetting[i];
 					//console.log(setting);
 					busCarouselSetting[i].busCarousel(setting);
 				}
@@ -160,9 +209,9 @@ if (Element.prototype.busCarousel === undefined) {
 		if (typeof busCarousel === 'object') {
 			for (var i in busCarousel) {
 				if (busCarousel[i]['elem'] != null) {
-					if (typeof busCarousel[i]['elem'].length === 'number') {
+					/* if (typeof busCarousel[i]['elem'].length === 'number') {
 						busCarousel[i]['elem'] = busCarousel[i]['elem'][0];
-					}
+					} */
 					//console.log(busCarousel[i]);
 					busCarousel[i]['elem'].busCarousel(busCarousel[i]);
 				}
