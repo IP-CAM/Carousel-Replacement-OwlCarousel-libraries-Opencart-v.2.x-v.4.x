@@ -21,6 +21,20 @@ document.getElementById('slideshow1').busCarousel({
 });
 }
 ```
+Можно отложить загрузку скрипта, если поместить настройки слайда в событие:
+```
+window.addEventListener('busCarousel', function() {
+	document.getElementById('slideshow1').busCarousel({
+		items: 6,
+		singleItem: true,
+		autoPlay: 3000,
+		navigation: true,
+		navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+		pagination: true,
+	});
+});
+```
+
 Вариант 2 (при таком варианте можно отложить загрузку скрипта)
 ```
 if (typeof busCarousel !== 'object') {
