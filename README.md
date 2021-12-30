@@ -3,8 +3,8 @@
 # Установка
 Подключите стили и скрипт, установив в ```<head></head>```:
 ```
-<link href="busCarousel.css" type="text/css" rel="preload stylesheet" as="style" />
-<script src="busCarousel.js" type="text/javascript" onload="var busCarousel = {};" async></script>
+<link href="bus_carousel.css" type="text/css" rel="preload stylesheet" as="style" />
+<script src="bus_carousel.js" type="text/javascript" onload="var busCarousel = {};" async></script>
 ```
 
 Привяжите html-код изображений к скрипту:
